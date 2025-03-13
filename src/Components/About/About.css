@@ -2,6 +2,7 @@
     margin: 100px auto;
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: space-between;
     width: 90%;
 }
@@ -45,6 +46,11 @@
 @media (max-width: 800px){
     .about{
         flex-direction: column;
+    }
+    .about-img{
+        width: 100%;
+        height:90vh;
+        border-radius: 10px;
     }
     .about-left{
         flex-basis: 100%;
