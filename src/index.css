@@ -36,6 +36,19 @@ a{
   margin-left: 10px;
 }
 .btn.dark-btn{
-  background: #212EA0;
+  background: #355C01;
   color: #fff;
+}
+
+
+/*------media query--------*/
+
+@media (max-width:1000px){
+  .container{
+      padding-left: 5%;
+      padding-right: 5%;
+  }
+  .btn{
+    padding: 14px 22px;
+  }
 }
