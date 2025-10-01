@@ -1,22 +1,173 @@
-.video-player{
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Overlay */
+.video-player {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hidden state */
+.video-player.hide {
+  display: none;
+}
+
+/* Container that keeps aspect ratio and limits size */
+.video-wrap {
+  position: relative;
+  width: min(1100px, 95vw);
+  max-width: 1100px;
+  height: auto;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  /* initial state before entrance */
+  opacity: 0;
+  transform: scale(0.98);
+  transition: transform 320ms cubic-bezier(.2,.9,.2,1), opacity 320ms ease;
+}
+
+/* Apply enter animation class */
+.video-wrap.enter {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Subtle keyframe (optional) to give slight pop — used if you prefer keyframes */
+/*
+@keyframes vpEnter {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.video-wrap.enter {
+  animation: vpEnter 320ms cubic-bezier(.2,.9,.2,1) both;
+}
+*/
+
+/* The video itself */
+.video-wrap video {
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  border-radius: 6px;
+  background: #000;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  outline: none;
+  object-fit: contain;
+  border: 4px solid rgba(255,255,255,0.08);
+}
+
+/* Close button (large for touch) */
+.vp-close {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  transform: translate(50%, -50%);
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+/* Slight hover/focus state */
+.vp-close:hover,
+.vp-close:focus {
+  background: rgba(0,0,0,0.8);
+  transform: translate(50%, -50%) scale(1.02);
+}
+
+/* Loader overlay (appears above the video) */
+.vp-loader {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none; /* don't block clicks on controls */
+  z-index: 20;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.55) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+  transition: opacity 180ms ease;
+  opacity: 0;
+}
+
+/* Visible state */
+.vp-loader.visible {
+  display: flex;
+  opacity: 1;
+}
+
+/* Simple spinner */
+.spinner {
+  width: 46px;
+  height: 46px;
+  border-radius: 9999px;
+  border: 4px solid rgba(255,255,255,0.12);
+  border-top-color: rgba(255,255,255,0.95);
+  animation: spin 900ms linear infinite;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+/* Loader text */
+.loader-text {
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+/* Spinner keyframes */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 640px) {
+  .video-wrap {
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 8px;
+  }
+  .vp-close {
+    top: 8px;
+    right: 8px;
+    transform: none;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+  .video-wrap video {
+    border-radius: 4px;
+    border: 2px solid rgba(255,255,255,0.06);
+  }
+  .spinner {
+    width: 36px;
+    height: 36px;
+    border-width: 3px;
+  }
 }
-.video-player video{
-    width: 90%;
-    max-width: 700px;
-    height: auto;
-    border: 4px solid #fff;
-}
-.video-player.hide{
-    display: none;
-    
+
+/* Landscape phones — maximize height usage */
+@media (orientation: landscape) and (max-height: 500px) {
+  .video-wrap video {
+    max-height: 100vh;
+  }
 }
