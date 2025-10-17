@@ -2,7 +2,7 @@ import React from "react";
 import './Contact.css'
 import msg_icon from '../../Assets/msg-icon.png'
 import white_arrow from '../../Assets/white-arrow.png'
-import { FaEnvelope, FaPhone, FaMapMarkerAlt} from "react-icons/fa";
+import {  FaPhone, FaMapMarkerAlt} from "react-icons/fa";
 
 const Contact = () =>{
 
@@ -42,7 +42,7 @@ const Contact = () =>{
                 customers.
             </p>
             <ul>
-                <li><FaEnvelope /> Contact@MMB's</li>
+                {/* <li><FaEnvelope /> Contact@MMB's</li> */}
                 <li><FaPhone/>+233537740063</li>
                 <li><FaMapMarkerAlt />Cape Coast, Central Region</li>
             </ul>

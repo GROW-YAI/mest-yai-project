@@ -1,6 +1,6 @@
 import React from "react";
 import './Footer.css'
-import { FaEnvelope, FaPhone, FaFacebook, FaInstagram,  FaLinkedin, } from "react-icons/fa";
+import { FaFacebook, FaInstagram,  FaLinkedin, } from "react-icons/fa";
 import logo from '../../Assets/mmb-logo.png'
 
 const Footer = () => {
@@ -11,12 +11,12 @@ const Footer = () => {
           <div className="footer-column">
             <h2 className="footer-title"><img src={logo} alt="" className="logo"/></h2>
             <p>At MMB's Hygienic Socks, we believe in innovation and sustainability</p>
-            <div className="footer-info">
+            {/* <div className="footer-info">
               <FaEnvelope /> <span>info@info.com</span>
             </div>
             <div className="footer-info">
               <FaPhone /> <span>+233123456789</span>
-            </div>
+            </div> */}
           </div>
           <div className="footer-column">
             <h3>About</h3>
