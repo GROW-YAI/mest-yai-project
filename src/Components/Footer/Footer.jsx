@@ -19,13 +19,13 @@ const Footer = () => {
             </div> */}
           </div>
           <div className="footer-column">
-            <h3>About</h3>
-            <p>Company</p>
+            {/* <h3>Quick Links</h3>
+            <p>About</p>
             <p>Products</p>
-            <p>Our Commitment</p>
+            <p>Our Commitment</p> */}
           </div>
           <div className="footer-column">
-            <h3>Quick Links</h3>
+            {/* <h3>Quick Links</h3> */}
             <p>Follow us on Social Media</p>
             <div className="social-icons">
             <a href="https://web.facebook.com/profile.php?id=61573529680923" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
